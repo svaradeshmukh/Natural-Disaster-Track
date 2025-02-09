@@ -1,8 +1,8 @@
-import snscrape.modules.twitter as sntwitter
+from snscrape.modules.twitter import TwitterSearchScraper
 import pandas as pd
 
 # Define the query and the number of tweets to scrape
-query = "fire"
+query = "#wildfire"
 max_tweets = 10
 
 # Scraping tweets
