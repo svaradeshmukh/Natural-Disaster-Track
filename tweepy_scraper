@@ -1,0 +1,22 @@
+import tweepy
+
+# Replace these values with your own keys
+api_key = w03NkUDksJ6S65PTjqWSpVA9s
+api_key_secret = KzMM3ECpOstw1FImSGom6vNiDpeKFdXmZgmioiLSglZlK7bF2Q
+access_token = 1286136995752763394-pOnnVuSWJT2CL6SJ5Vga3XG69pbVV3
+access_token_secret = OcC8h86lqDRrLsmIqz00igXanOOKWvfzm4lrgmi2xd5tQ
+
+# Authenticate to Twitter
+auth = tweepy.OAuth1UserHandler(api_key, api_key_secret, access_token, access_token_secret)
+api = tweepy.API(auth)
+
+# Function to get tweets
+def get_tweets(username):
+    # Number of tweets to pull
+    number_of_tweets = 10
+    tweets = api.user_timeline(screen_name=username, count=number_of_tweets)
+    
+    # Creating a list of tweet texts
+    tweet_list = [tweet.text for tweet in tweets]
+    return tweet_list
+
