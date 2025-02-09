@@ -1,0 +1,19 @@
+import snscrape.modules.twitter as sntwitter
+import pandas as pd
+
+# Define the query and the number of tweets to scrape
+query = "fire"
+max_tweets = 10
+
+# Scraping tweets
+tweets = []
+for i, tweet in enumerate(sntwitter.TwitterSearchScraper(query).get_items()):
+    if i >= max_tweets:
+        break
+    tweets.append([tweet.date, tweet.id, tweet.content, tweet.user.username, tweet.coordinates])
+
+# Creating a DataFrame
+df = pd.DataFrame(tweets, columns=['Date', 'Tweet ID', 'Content', 'Username', 'Geo-location'])
+
+# Saving to a CSV file
+df.to_csv('tweets.csv', index=False)
